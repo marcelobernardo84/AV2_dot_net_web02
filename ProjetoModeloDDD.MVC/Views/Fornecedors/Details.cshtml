@@ -1,0 +1,66 @@
+﻿@model ProjetoModeloDDD.Domain.Entities.Fornecedor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Fornecedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco.logradouro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco.logradouro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produto.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produto.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cnpj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cnpj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.razaoSocial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.razaoSocial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.inscricaoMunicipal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.inscricaoMunicipal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.receitaBruta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.receitaBruta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FornecedorId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
