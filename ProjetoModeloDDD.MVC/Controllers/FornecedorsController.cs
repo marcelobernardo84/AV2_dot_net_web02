@@ -1,117 +1,87 @@
-﻿using System;
+﻿using AutoMapper;
+using ProjetoModeloDDD.Application.Interface;
+using ProjetoModeloDDD.Domain.Entities;
+using ProjetoModeloDDD.MVC.ViewModels;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ProjetoModeloDDD.Domain.Entities;
-using ProjetoModeloDDD.Infra.Data.Context;
 
 namespace ProjetoModeloDDD.MVC.Controllers
 {
     public class FornecedorsController : Controller
     {
-        private ProjetoModeloContext db = new ProjetoModeloContext();
+
+        private readonly IFornecedorAppService _fornecedorApp;
+
+        public FornecedorsController(IFornecedorAppService fornecedorApp)
+        {
+            _fornecedorApp = fornecedorApp;
+        }
 
         // GET: Fornecedors
         public ActionResult Index()
         {
-            var fornecedors = db.Fornecedors.Include(f => f.Endereco).Include(f => f.Produto);
-            return View(fornecedors.ToList());
+            var fornecedorViewModel = Mapper.Map<IEnumerable<Fornecedor>, IEnumerable<FornecedorViewModel>>(_fornecedorApp.GetAll());
+            return View(fornecedorViewModel);
         }
 
         // GET: Fornecedors/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Fornecedor fornecedor = db.Fornecedors.Find(id);
-            if (fornecedor == null)
-            {
-                return HttpNotFound();
-            }
-            return View(fornecedor);
+            var fornecedor = _fornecedorApp.GetById(id);
+            var fornecedorViewModel = Mapper.Map<Fornecedor, FornecedorViewModel>(fornecedor);
+            return View(fornecedorViewModel);
         }
 
         // GET: Fornecedors/Create
         public ActionResult Create()
         {
-            ViewBag.EnderecoId = new SelectList(db.Enderecos, "EnderecoId", "logradouro");
-            ViewBag.ProdutoId = new SelectList(db.Produtos, "ProdutoId", "Nome");
             return View();
         }
 
         // POST: Fornecedors/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FornecedorId,cnpj,razaoSocial,inscricaoMunicipal,receitaBruta,ProdutoId,EnderecoId")] Fornecedor fornecedor)
+        public ActionResult Create(FornecedorViewModel fornecedor)
         {
-            if (ModelState.IsValid)
-            {
-                db.Fornecedors.Add(fornecedor);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            var fornecedorDomain = Mapper.Map<FornecedorViewModel, Fornecedor>(fornecedor);
+            _fornecedorApp.Add(fornecedorDomain);
 
-            ViewBag.EnderecoId = new SelectList(db.Enderecos, "EnderecoId", "logradouro", fornecedor.EnderecoId);
-            ViewBag.ProdutoId = new SelectList(db.Produtos, "ProdutoId", "Nome", fornecedor.ProdutoId);
-            return View(fornecedor);
+            return RedirectToAction("Index");
         }
 
         // GET: Fornecedors/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Fornecedor fornecedor = db.Fornecedors.Find(id);
-            if (fornecedor == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.EnderecoId = new SelectList(db.Enderecos, "EnderecoId", "logradouro", fornecedor.EnderecoId);
-            ViewBag.ProdutoId = new SelectList(db.Produtos, "ProdutoId", "Nome", fornecedor.ProdutoId);
-            return View(fornecedor);
+            var fornecedor = _fornecedorApp.GetById(id);
+            var fornecedorViewModel = Mapper.Map<Fornecedor, FornecedorViewModel>(fornecedor);
+            return View(fornecedorViewModel);
         }
 
         // POST: Fornecedors/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FornecedorId,cnpj,razaoSocial,inscricaoMunicipal,receitaBruta,ProdutoId,EnderecoId")] Fornecedor fornecedor)
+        public ActionResult Edit(FornecedorViewModel fornecedor)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(fornecedor).State = EntityState.Modified;
-                db.SaveChanges();
+                var fornecedorDomain = Mapper.Map<FornecedorViewModel, Fornecedor>(fornecedor);
+                _fornecedorApp.Update(fornecedorDomain);
+
                 return RedirectToAction("Index");
             }
-            ViewBag.EnderecoId = new SelectList(db.Enderecos, "EnderecoId", "logradouro", fornecedor.EnderecoId);
-            ViewBag.ProdutoId = new SelectList(db.Produtos, "ProdutoId", "Nome", fornecedor.ProdutoId);
+
             return View(fornecedor);
         }
 
         // GET: Fornecedors/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Fornecedor fornecedor = db.Fornecedors.Find(id);
-            if (fornecedor == null)
-            {
-                return HttpNotFound();
-            }
-            return View(fornecedor);
+            var fornecedor = _fornecedorApp.GetById(id);
+            var fornecedorViewModel = Mapper.Map<Fornecedor, FornecedorViewModel>(fornecedor);
+            return View(fornecedorViewModel);
         }
 
         // POST: Fornecedors/Delete/5
@@ -119,19 +89,10 @@ namespace ProjetoModeloDDD.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Fornecedor fornecedor = db.Fornecedors.Find(id);
-            db.Fornecedors.Remove(fornecedor);
-            db.SaveChanges();
+            var fornecedor = _fornecedorApp.GetById(id);
+            _fornecedorApp.Remove(fornecedor);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

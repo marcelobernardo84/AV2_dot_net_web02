@@ -1,39 +1,39 @@
-﻿using System;
+﻿using AutoMapper;
+using ProjetoModeloDDD.Application.Interface;
+using ProjetoModeloDDD.Domain.Entities;
+using ProjetoModeloDDD.MVC.ViewModels;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ProjetoModeloDDD.Domain.Entities;
-using ProjetoModeloDDD.Infra.Data.Context;
 
 namespace ProjetoModeloDDD.MVC.Controllers
 {
     public class EnderecosController : Controller
     {
-        private ProjetoModeloContext db = new ProjetoModeloContext();
+
+        private readonly IEnderecoAppService _enderecoApp;
+
+        public EnderecosController(IEnderecoAppService enderecoApp)
+        {
+            _enderecoApp = enderecoApp;
+        }
 
         // GET: Enderecos
         public ActionResult Index()
         {
-            return View(db.Enderecos.ToList());
+            var enderecoViewModel = Mapper.Map<IEnumerable<Endereco>, IEnumerable<EnderecoViewModel>>(_enderecoApp.GetAll());
+            return View(enderecoViewModel);
         }
 
         // GET: Enderecos/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Endereco endereco = db.Enderecos.Find(id);
-            if (endereco == null)
-            {
-                return HttpNotFound();
-            }
-            return View(endereco);
+            var endereco = _enderecoApp.GetById(id);
+            var enderecoViewModel = Mapper.Map<Endereco, EnderecoViewModel>(endereco);
+            return View(enderecoViewModel);
         }
 
         // GET: Enderecos/Create
@@ -43,66 +43,45 @@ namespace ProjetoModeloDDD.MVC.Controllers
         }
 
         // POST: Enderecos/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EnderecoId,logradouro,numero,complemento,bairro,municipio,cep,uf")] Endereco endereco)
+        public ActionResult Create(EnderecoViewModel endereco)
         {
-            if (ModelState.IsValid)
-            {
-                db.Enderecos.Add(endereco);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            var enderecoDomain = Mapper.Map<EnderecoViewModel, Endereco>(endereco);
+            _enderecoApp.Add(enderecoDomain);
 
-            return View(endereco);
+            return RedirectToAction("Index");
         }
 
         // GET: Enderecos/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Endereco endereco = db.Enderecos.Find(id);
-            if (endereco == null)
-            {
-                return HttpNotFound();
-            }
-            return View(endereco);
+            var endereco = _enderecoApp.GetById(id);
+            var enderecoViewModel = Mapper.Map<Endereco, EnderecoViewModel>(endereco);
+            return View(enderecoViewModel);
         }
 
         // POST: Enderecos/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EnderecoId,logradouro,numero,complemento,bairro,municipio,cep,uf")] Endereco endereco)
+        public ActionResult Edit(EnderecoViewModel endereco)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(endereco).State = EntityState.Modified;
-                db.SaveChanges();
+                var enderecoDomain = Mapper.Map<EnderecoViewModel, Endereco>(endereco);
+                _enderecoApp.Update(enderecoDomain);
+
                 return RedirectToAction("Index");
             }
+
             return View(endereco);
         }
 
         // GET: Enderecos/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Endereco endereco = db.Enderecos.Find(id);
-            if (endereco == null)
-            {
-                return HttpNotFound();
-            }
-            return View(endereco);
+            var endereco = _enderecoApp.GetById(id);
+            var enderecoViewModel = Mapper.Map<Endereco, EnderecoViewModel>(endereco);
+            return View(enderecoViewModel);
         }
 
         // POST: Enderecos/Delete/5
@@ -110,19 +89,10 @@ namespace ProjetoModeloDDD.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Endereco endereco = db.Enderecos.Find(id);
-            db.Enderecos.Remove(endereco);
-            db.SaveChanges();
+            var endereco = _enderecoApp.GetById(id);
+            _enderecoApp.Remove(endereco);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
