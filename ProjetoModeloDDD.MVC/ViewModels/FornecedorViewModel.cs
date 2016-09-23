@@ -10,12 +10,7 @@ namespace ProjetoModeloDDD.MVC.ViewModels
     public class FornecedorViewModel
     {   
         [Key]
-        public int ForncedorId { get; set; }
-
-        [Required(ErrorMessage = "Preencha o campo Nome.")]
-        [MaxLength(150, ErrorMessage = "Máximo de {0} caracteres.")]
-        [MinLength(2, ErrorMessage = "Mínimo de {0} caracteres.")]
-        public string Nome { get; set; }
+        public int FornecedorId { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Sobrenome.")]
         [MaxLength(150, ErrorMessage = "Máximo de {0} caracteres.")]

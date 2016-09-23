@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjetoModeloDDD.Domain.Entities.Fornecedor>
+﻿@model IEnumerable<ProjetoModeloDDD.MVC.ViewModels.FornecedorViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -10,13 +10,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Endereco.logradouro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Produto.Nome)
-        </th>
+    <tr>        
         <th>
             @Html.DisplayNameFor(model => model.cnpj)
         </th>
@@ -34,12 +28,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Endereco.logradouro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Produto.Nome)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.cnpj)
         </td>
