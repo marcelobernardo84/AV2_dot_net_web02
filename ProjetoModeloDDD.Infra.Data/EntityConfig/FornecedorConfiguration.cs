@@ -14,7 +14,7 @@ namespace ProjetoModeloDDD.Infra.Data.EntityConfig
         {
             HasKey(p => p.FornecedorId);
             Property(p => p.cnpj).IsRequired().HasMaxLength(20);
-            HasRequired(p => p.Produto).WithMany().HasForeignKey(p => p.ProdutoId);
+            //HasRequired(p => p.Produto).WithMany().HasForeignKey(p => p.ProdutoId);
             HasRequired(p => p.Endereco).WithMany().HasForeignKey(p => p.EnderecoId);
         }
     }

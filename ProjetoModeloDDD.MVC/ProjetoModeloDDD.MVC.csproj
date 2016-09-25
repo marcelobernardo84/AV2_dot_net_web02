@@ -250,11 +250,11 @@
     <Content Include="Views\Enderecos\Details.cshtml" />
     <Content Include="Views\Enderecos\Edit.cshtml" />
     <Content Include="Views\Enderecos\Index.cshtml" />
-    <Content Include="Views\Fornecedors\Create.cshtml" />
     <Content Include="Views\Fornecedors\Delete.cshtml" />
     <Content Include="Views\Fornecedors\Details.cshtml" />
     <Content Include="Views\Fornecedors\Edit.cshtml" />
     <Content Include="Views\Fornecedors\Index.cshtml" />
+    <Content Include="Views\Fornecedors\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

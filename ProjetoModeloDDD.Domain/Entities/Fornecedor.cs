@@ -15,7 +15,7 @@ namespace ProjetoModeloDDD.Domain.Entities
         public decimal receitaBruta { get; set; }
         //public Endereco endereco { get; set; }
 
-        public int ProdutoId { get; set; }
+        //public int ProdutoId { get; set; }
         public int EnderecoId { get; set; }
         public virtual Produto Produto { get; set; }
         public virtual Endereco Endereco { get; set; }

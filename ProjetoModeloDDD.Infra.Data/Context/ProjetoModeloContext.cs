@@ -27,10 +27,10 @@ namespace ProjetoModeloDDD.Infra.Data.Context
             modelBuilder.Properties<String>().Configure(p => p.HasColumnType("varchar"));
             modelBuilder.Properties<String>().Configure(p => p.HasMaxLength(100));
 
-            //modelBuilder.Configurations.Add(new ClienteConfiguration());
-            //modelBuilder.Configurations.Add(new ProdutoConfiguration());
-            //modelBuilder.Configurations.Add(new FornecedorConfiguration());
-            //modelBuilder.Configurations.Add(new EnderecoConfiguration());
+            modelBuilder.Configurations.Add(new ClienteConfiguration());
+            modelBuilder.Configurations.Add(new ProdutoConfiguration());
+            modelBuilder.Configurations.Add(new FornecedorConfiguration());
+            modelBuilder.Configurations.Add(new EnderecoConfiguration());
         }
 
         public override int SaveChanges()
@@ -55,5 +55,7 @@ namespace ProjetoModeloDDD.Infra.Data.Context
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Fornecedor> Fornecedors { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
+
+        //public System.Data.Entity.DbSet<ProjetoModeloDDD.MVC.ViewModels.FornecedorViewModel> FornecedorViewModels { get; set; }
     }
 }

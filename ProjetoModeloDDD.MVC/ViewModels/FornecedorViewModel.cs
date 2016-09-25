@@ -12,17 +12,21 @@ namespace ProjetoModeloDDD.MVC.ViewModels
         [Key]
         public int FornecedorId { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo Sobrenome.")]
-        [MaxLength(150, ErrorMessage = "Máximo de {0} caracteres.")]
-        [MinLength(2, ErrorMessage = "Mínimo de {0} caracteres.")]
+        [Display(Name = "CNPJ do Fornecedor*")]
+        [Required(ErrorMessage = "Preencha o campo CNPJ.")]
+        [MaxLength(14, ErrorMessage = "Máximo de {0} caracteres.")]        
         public string cnpj { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo E-Mail.")]
-        [MaxLength(100, ErrorMessage = "Máximo de {0} caracteres.")]        
+        [Display(Name ="Razão Social*")]
+        [Required(ErrorMessage = "Preencha o campo Razão Social.")]
+        [MaxLength(200, ErrorMessage = "Máximo de {0} caracteres.")]        
         public string razaoSocial { get; set; }
 
+        [Display(Name = "Inscrição Municipal")]
         public string inscricaoMunicipal { get; set; }
+
+        [Display(Name = "Receita Bruta*")]
         public decimal receitaBruta { get; set; }
-        public Endereco endereco { get; set; }
+        public EnderecoViewModel endereco { get; set; }
     }
 }
