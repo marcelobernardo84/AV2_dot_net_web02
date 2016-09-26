@@ -13,12 +13,12 @@ namespace ProjetoModeloDDD.Domain.Services
     {
         private readonly IAutoDeInfracaoRepository _autoDeInfracaoRepository;
 
-        public AutoDeInfracaoService(IAutoDeInfracaoRepository autoDeInfracaoRepository) : base(autoDeInfracaoRepository)
+        public AutoDeInfracaoService(IAutoDeInfracaoRepository AutoDeInfracaoRepository) : base(AutoDeInfracaoRepository)
         {
-            _autoDeInfracaoRepository = autoDeInfracaoRepository;
+            _autoDeInfracaoRepository = AutoDeInfracaoRepository;
         }
 
-        public IEnumerable<AutoDeInfracao> ObterAutosDeInfracao(IEnumerable<AutoDeInfracao> autos)
+        public IEnumerable<AutoDeInfracao> ObterAutosDeInfracao()
         {
             throw new NotImplementedException();
         }

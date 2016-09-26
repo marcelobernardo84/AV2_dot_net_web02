@@ -10,6 +10,6 @@ namespace ProjetoModeloDDD.Domain.Interfaces.Services
 {
     public interface IAutoDeInfracaoService : IServiceBase<AutoDeInfracao>
     {
-        IEnumerable<AutoDeInfracao> ObterAutosDeInfracao(IEnumerable<AutoDeInfracao> autos);
+         IEnumerable<AutoDeInfracao> ObterAutosDeInfracao();
     }
 }

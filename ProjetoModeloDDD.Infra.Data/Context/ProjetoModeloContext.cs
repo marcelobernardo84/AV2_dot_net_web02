@@ -57,6 +57,8 @@ namespace ProjetoModeloDDD.Infra.Data.Context
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Fornecedor> Fornecedors { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Processo> Processos { get; set; }
+        public DbSet<AutoDeInfracao> AutosDeInfracao { get; set; }
 
         //public System.Data.Entity.DbSet<ProjetoModeloDDD.MVC.ViewModels.FornecedorViewModel> FornecedorViewModels { get; set; }
     }

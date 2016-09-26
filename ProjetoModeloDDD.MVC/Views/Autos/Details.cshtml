@@ -1,0 +1,98 @@
+﻿@model ProjetoModeloDDD.Domain.Entities.AutoDeInfracao
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>AutoDeInfracao</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AutoID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AutoID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CNPJ)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CNPJ)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RazaoSocial)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RazaoSocial)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ReceitaBruta)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ReceitaBruta)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DataRelato)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DataRelato)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Relato)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Relato)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Gravidade)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Gravidade)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Atenuante)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Atenuante)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Agravante)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Agravante)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

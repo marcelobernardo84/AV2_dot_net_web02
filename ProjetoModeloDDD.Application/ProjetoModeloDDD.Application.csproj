@@ -43,11 +43,15 @@
     <Compile Include="AppServiceBase.cs" />
     <Compile Include="ClienteAppService.cs" />
     <Compile Include="EnderecoAppService.cs" />
+    <Compile Include="AutoDeInfracaoAppService.cs" />
+    <Compile Include="ProcessoAppService.cs" />
     <Compile Include="FornecedorAppService.cs" />
+    <Compile Include="Interface\IProcessoAppService.cs" />
     <Compile Include="Interface\IClienteAppService.cs" />
     <Compile Include="Interface\IAppServiceBase.cs" />
     <Compile Include="Interface\IEnderecoAppService.cs" />
     <Compile Include="Interface\IFornecedorAppService.cs" />
+    <Compile Include="Interface\IAutoDeInfracaoAppService.cs" />
     <Compile Include="Interface\IProdutoAppService.cs" />
     <Compile Include="ProdutoAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

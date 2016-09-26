@@ -37,6 +37,8 @@ namespace ProjetoModeloDDD.MVC.AutoMapper
             Mapper.CreateMap<Produto, ProdutoViewModel>();
             Mapper.CreateMap<Fornecedor, FornecedorViewModel>();
             Mapper.CreateMap<Endereco, EnderecoViewModel>();
+            Mapper.CreateMap<Processo, ProcessoViewModel>();
+            Mapper.CreateMap<AutoDeInfracao, AutoDeInfracaoViewModel>();
         }
     }
 }

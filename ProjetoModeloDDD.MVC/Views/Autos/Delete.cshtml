@@ -1,0 +1,104 @@
+﻿@model ProjetoModeloDDD.Domain.Entities.AutoDeInfracao
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>AutoDeInfracao</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AutoID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AutoID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CNPJ)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CNPJ)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RazaoSocial)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RazaoSocial)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ReceitaBruta)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ReceitaBruta)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DataRelato)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DataRelato)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Relato)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Relato)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Gravidade)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Gravidade)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Atenuante)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Atenuante)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Agravante)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Agravante)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>
