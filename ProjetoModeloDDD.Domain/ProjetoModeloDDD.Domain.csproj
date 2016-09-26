@@ -47,6 +47,7 @@
     <Compile Include="Interfaces\Repositories\IProcessoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IProdutoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Services\IProcessoService.cs" />
     <Compile Include="Interfaces\Services\IEnderecoService.cs" />
     <Compile Include="Interfaces\Services\IFornecedorService.cs" />
     <Compile Include="Interfaces\Services\IProdutoService.cs" />

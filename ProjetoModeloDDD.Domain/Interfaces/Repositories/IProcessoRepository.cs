@@ -9,6 +9,6 @@ namespace ProjetoModeloDDD.Domain.Interfaces.Repositories
 {
     public interface IProcessoRepository : IRepositoryBase<Processo>
     {
-        IEnumerable<Processo> BuscarPorID(int id);
+        IEnumerable<Processo> BuscarPorCNPJ(string cnpj);
     }
 }

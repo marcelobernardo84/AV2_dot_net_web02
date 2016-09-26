@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ProjetoModeloDDD.Domain.Entities;
+using ProjetoModeloDDD.Domain.Interfaces.Repositories;
+using ProjetoModeloDDD.Domain.Interfaces.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +18,9 @@ namespace ProjetoModeloDDD.Domain.Services
             _processoRepository = processoRepository;
         }
 
-        public IEnumerable<Processo> BuscarPorID(int id)
+        public IEnumerable<Processo> BuscarPorCNPJ(string cnpj)
         {
-            return _processoRepository.BuscarPorID(id);
+            return _processoRepository.BuscarPorCNPJ(cnpj);
         }
     }
 }
