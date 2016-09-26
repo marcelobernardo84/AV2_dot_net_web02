@@ -13,5 +13,7 @@ namespace ProjetoModeloDDD.Domain.Entities
         public string RelatoFiscalizacao { get; set; }
         public DateTime DataRelato { get; set; }
         public string FiscalResponsavel { get; set; }
+
+
     }
 }
