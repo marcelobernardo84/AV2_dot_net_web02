@@ -36,8 +36,11 @@ namespace ProjetoModeloDDD.MVC.ViewModels
 
         [Display(Name = "CEP*")]
         [Required(ErrorMessage = "Preencha o campo CEP.")]
-        [MaxLength(200, ErrorMessage = "Máximo de {0} caracteres.")]
+        [MaxLength(9, ErrorMessage = "Máximo de {0} caracteres.")]
         public string Cep { get; set; }
+
+        [Display(Name = "Unidade Federativa*")]
+        [Required(ErrorMessage = "Preencha o campo Unidade Federativa*")]        
         public string Uf { get; set; }
     }
 }

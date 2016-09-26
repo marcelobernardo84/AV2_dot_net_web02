@@ -18,7 +18,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.cnpj, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.cnpj, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.cnpj, new { htmlAttributes = new { @class = "form-control", @id = "mascarar_cnpj" } })
                 @Html.ValidationMessageFor(model => model.cnpj, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -66,7 +66,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.endereco.Cep, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.endereco.Cep, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.endereco.Cep, new { htmlAttributes = new { @class = "form-control", @id = "mascarar_cep" } })
                 @Html.ValidationMessageFor(model => model.endereco.Cep, "", new { @class = "text-danger" })
             </div>
         </div>        
@@ -90,7 +90,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.inscricaoMunicipal, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.inscricaoMunicipal, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.inscricaoMunicipal, new { htmlAttributes = new { @class = "form-control", @id = "mascarar_insc_munic" } })
                 @Html.ValidationMessageFor(model => model.inscricaoMunicipal, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -117,4 +117,8 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/bootstrap.js")
+    @Scripts.Render("~/Scripts/jquery-1.10.2.js")
+    @Scripts.Render("~/Scripts/jquery.maskedinput.js")
+    @Scripts.Render("~/Scripts/mask.js")
 }

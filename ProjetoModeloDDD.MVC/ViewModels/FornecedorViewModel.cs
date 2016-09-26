@@ -14,15 +14,16 @@ namespace ProjetoModeloDDD.MVC.ViewModels
 
         [Display(Name = "CNPJ do Fornecedor*")]
         [Required(ErrorMessage = "Preencha o campo CNPJ.")]
-        [MaxLength(14, ErrorMessage = "Máximo de {0} caracteres.")]        
+        [MaxLength(18, ErrorMessage = "Máximo de {0} caracteres.")]        
         public string cnpj { get; set; }
 
         [Display(Name ="Razão Social*")]
         [Required(ErrorMessage = "Preencha o campo Razão Social.")]
-        [MaxLength(200, ErrorMessage = "Máximo de {0} caracteres.")]        
+        [MaxLength(200, ErrorMessage = "Máximo de {0} caracteres.")]       
         public string razaoSocial { get; set; }
 
         [Display(Name = "Inscrição Municipal")]
+        [MaxLength(11, ErrorMessage = "Máximo de {0} caracteres.")]
         public string inscricaoMunicipal { get; set; }
 
         [Display(Name = "Receita Bruta*")]
